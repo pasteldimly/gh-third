@@ -3,12 +3,19 @@ on:
   pull_request:
     types:
       - opened
-  workflow_dispatch:
-  push: 
     branches:
       - main
-      - "dev-*"
+      - "b*"
       - "dev/**"
+  workflow_dispatch:
+  push: 
+    # all the filters must be true to trigger the event
+    # event trigger if code pushed in below branches
+    branches:
+      - main
+      - "b*"
+      - "dev/**"
+    # if we change in below files event will not trigger as we use ignore
     paths-ignore:
       - ".github/workflows/*"
 jobs:
